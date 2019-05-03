@@ -1,4 +1,8 @@
 # SERVICE FILE FOR USBIP CLIENT ON HASS.IO HOST MACHINE
+# UDPATE THE PATH BELOW TO YOUR HOME DIRECTORY. USING EXAMPLE FOR DEFAULT
+#   RASPBERRY PI USERS: /home/pi/
+# SAVE TO `/lib/systemd/system/` AND RUN `sudo systemctl enable usbip.service` TO ENABLE.
+
 [Unit]
 Description=usbip client
 After=network-online.target
@@ -7,8 +11,8 @@ Wants=network-online.target
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/home/skynet/scripts/usbip start
-ExecStop=/home/skynet/scripts/usbip stop
+ExecStart=/home/pi/scripts/usbip/usbipManager.sh start
+ExecStop=/home/pi/scripts/usbip/usbipManager.sh stop
 
 [Install]
 WantedBy=multi-user.target

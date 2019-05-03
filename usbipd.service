@@ -1,0 +1,19 @@
+# SERVICE FILE FOR USBIP SERVER ON HOST MACHINE WITH USB CONNECTED
+# UPDATE LINE 13 TO THE DETAILS FOR YOUR HASS.IO HOST MACHINE
+# MAKE SURE THE ROOT USER ON THIS MACHINE CAN USE PUBLIC KEYS TO LOGIN VIA SSH
+#   TO THE HASS.IO HOST.
+# SAVE TO `/lib/systemd/system/` AND RUN `sudo systemctl enable usbip.service` TO ENABLE.
+
+[Unit]
+Description=usbip host daemon
+After=network-online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/usbipd -D
+ExecStartPost=/bin/sh -c "/usr/sbin/usbip bind --$(/usr/sbin/usbip list -p -l | grep '#usbid=0658:0200#' | cut '-d#' -f1)"
+ExecStartPost=-/bin/sh -c "/usr/bin/ssh -t pi@192.168.1.2 'sudo systemctl restart usbip.service'"
+ExecStop=/bin/sh -c "/usr/sbin/usbip unbind --$(/usr/sbin/usbip list -p -l | grep '#usbid=0658:0200#' | cut '-d#' -f1); killall usbipd"
+
+[Install]
+WantedBy=multi-user.target
