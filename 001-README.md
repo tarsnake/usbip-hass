@@ -2,6 +2,7 @@
 1. usbipd.service (server/physical device)
 2. usbip.service (client/HASS host)
 3. udev rules file for *client* host -- maps USB device to `/dev/zwave` (add to `/etc/udev/rules.d/`)
+4. Client Manager Script
 
 # Setup:
 See the original instructions here: https://community.home-assistant.io/t/rpi-as-z-wave-zigbee-over-ip-server-for-hass/23006
