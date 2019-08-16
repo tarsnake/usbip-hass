@@ -1,7 +1,13 @@
 # SERVICE FILE FOR USBIP CLIENT ON HASS.IO HOST MACHINE
 # UDPATE THE PATH BELOW TO YOUR HOME DIRECTORY. USING EXAMPLE FOR DEFAULT
-#   RASPBERRY PI USERS: /home/pi/
+# RASPBERRY PI USERS: /home/pi/
 # SAVE TO `/lib/systemd/system/` AND RUN `sudo systemctl enable usbip.service` TO ENABLE.
+# set z-wave in configurator to an immutable identifier that won't change between reboots:
+# ls -la /dev/serial/by-id
+# the result will be something similar to the following that can be inserted into configuration.yaml
+#
+# zwave:
+#   usb_path: /dev/serial/by-id/usb-0658_0200-if00
 
 [Unit]
 Description=usbip client
