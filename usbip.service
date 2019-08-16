@@ -11,8 +11,8 @@ Wants=network-online.target
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/home/pi/scripts/usbip/usbipManager.sh start
-ExecStop=/home/pi/scripts/usbip/usbipManager.sh stop
+ExecStart=/root/scripts/usbip/usbipManager.sh start
+ExecStop=/root/scripts/usbip/usbipManager.sh stop
 
 [Install]
 WantedBy=multi-user.target

@@ -11,16 +11,16 @@
 #                 Make sure you update the variables below
 ###################################################################
 
-USBIP_SERVER_IP='192.168.1.3'
+USBIP_SERVER_IP='192.168.1.12'
 USB_SERIAL_ID='0658:0200'
-REMOTE_USER='pi'
+REMOTE_USER='root'
 REMOTE_SERVICE='usbipd.service'
 HASS_DOCKER_NAME='homeassistant'
 
 
 ATTEMPTS=8
 
-USBIP="/usr/local/sbin/usbip"
+USBIP="/usr/bin/usbip"
 name=`basename $0`
 
 SUDO=''
