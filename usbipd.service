@@ -16,4 +16,4 @@ ExecStartPost=-/bin/sh -c "/usr/bin/ssh -t root@192.168.1.2 '/root/scripts/usbip
 ExecStop=/bin/sh -c "/usr/sbin/usbip unbind --$(/usr/sbin/usbip list -p -l | grep '#usbid=0658:0200#' | cut '-d#' -f1)"
 # ExecStop=/bin/sh -c "/usr/sbin/$(uname -r)/usbip detach --port=$(/usr/lib/linux-tools/$(uname -r)/usbip port | grep '<Port in Use>' | sed -E 's/^Port ([0-9][0-9]).*/\1/')"
 [Install]
-WantedBy=multi-user.targetExecStop=/bin/sh -c "/usr/lib/linux-tools/$(uname -r)/usbip detach --port=$(/usr/lib/linux-tools/$(uname -r)/usbip port | grep '<Port in Use>' | sed -E 's/^Port ([0-9][0-9]).*/\1/')"
+WantedBy=multi-user.target
